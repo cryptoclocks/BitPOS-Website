@@ -1,0 +1,98 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:03.032
+At a BitPOS table, ordering starts with a
+
+00:00:03.072 --> 00:00:05.027
+scan. Then just say what you'd like.
+
+00:00:07.500 --> 00:00:09.963
+AI Coffee Copilot listens, or reads what you
+
+00:00:10.003 --> 00:00:12.580
+type, and turns your words into a clear order:
+
+00:00:12.620 --> 00:00:14.628
+the item, the options and the price.
+
+00:00:17.400 --> 00:00:19.660
+Nothing is ordered until you check it and tap
+
+00:00:19.700 --> 00:00:20.069
+confirm.
+
+00:00:23.000 --> 00:00:25.614
+Checkout runs on x402, an open payment
+
+00:00:25.654 --> 00:00:28.618
+protocol that connects a service to payment
+
+00:00:28.658 --> 00:00:30.084
+over HTTP, on Solana.
+
+00:00:30.124 --> 00:00:33.297
+The cafe asks for USDC, your wallet signs, and
+
+00:00:33.337 --> 00:00:36.371
+the payment is verified before your order is
+
+00:00:36.411 --> 00:00:36.720
+made.
+
+00:00:39.000 --> 00:00:41.077
+You decide how payments are approved:
+
+00:00:41.117 --> 00:00:43.651
+every time, or with a time-limited permission
+
+00:00:43.691 --> 00:00:45.196
+— daily, weekly or monthly.
+
+00:00:45.236 --> 00:00:47.713
+You set a limit per order, a total allowance
+
+00:00:47.753 --> 00:00:50.173
+and an expiry, and you can revoke it at any
+
+00:00:50.213 --> 00:00:50.459
+time.
+
+00:00:52.400 --> 00:00:55.384
+The limits are enforced by a delegated signer,
+
+00:00:55.424 --> 00:00:58.277
+not by the AI. x402 carries each payment; it
+
+00:00:58.317 --> 00:01:00.381
+never hands Copilot your wallet.
+
+00:01:01.800 --> 00:01:02.880
+Want the same again?
+
+00:01:02.920 --> 00:01:04.952
+Copilot checks today's price and your
+
+00:01:04.992 --> 00:01:06.072
+remaining allowance.
+
+00:01:06.112 --> 00:01:08.649
+You still confirm, without a wallet pop-up for
+
+00:01:08.689 --> 00:01:11.169
+every order. And when the allowance runs out,
+
+00:01:11.209 --> 00:01:12.401
+it stops and asks you.
+
+00:01:15.000 --> 00:01:16.836
+AI Coffee Copilot with x402.
+
+00:01:16.876 --> 00:01:19.651
+Easier ordering, fewer repeat choices, and
+
+00:01:19.691 --> 00:01:21.059
+spending you control.
+
+00:01:21.099 --> 00:01:22.533
+Coming soon to BitPOS.
+

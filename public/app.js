@@ -84,7 +84,7 @@ new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!modelS
 const players=$$('[data-player]');
 let soundUnlocked=false;
 function labelPlayer(root){const v=$('video',root);const th=language==='th';$('.inline-play span',root).textContent=v.paused?(th?'เล่น':'Play'):(th?'หยุด':'Pause');$('.inline-play',root).dataset.playing=String(!v.paused);$('.inline-play',root).setAttribute('aria-label',v.paused?'Play video':'Pause video');$('.inline-sound span',root).textContent=v.muted?(th?'แตะเปิดเสียง':'Enable sound'):(th?'เปิดเสียงอยู่':'Sound on');$('.inline-sound',root).setAttribute('aria-pressed',String(!v.muted));$('.inline-sound',root).setAttribute('aria-label',v.muted?'Enable video sound':'Mute video');}
-function loadVideo(v){if(!v.getAttribute('src')){v.src=v.dataset.src;v.load();}}
+function loadVideo(v){if(!v.getAttribute('src')){const portrait=v.dataset.portraitSrc&&matchMedia('(max-width:760px)').matches;v.src=portrait?v.dataset.portraitSrc:v.dataset.src;if(portrait&&v.dataset.portraitPoster)v.poster=v.dataset.portraitPoster;v.load();}}
 async function playVideo(v){
  loadVideo(v);players.forEach(p=>{const other=$('video',p);if(other!==v)other.pause();});
  const root=v.closest('[data-player]');

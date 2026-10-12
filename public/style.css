@@ -87,3 +87,5 @@ img{height:auto}body{overflow-x:clip}.photo-card img,.tablet-visual img,.film-im
 .cp-actions button{min-height:44px;padding:10px 8px;font-size:11px}.motion-paused .cp-listening .cp-wave i,.motion-paused .cp-listening .cp-mic:after,.motion-paused .cp-paid .cp-order{animation:none}.motion-paused .cp-meter span{transition:none}
 
 .cp-tech .cp-tech-feature{font-size:15px;font-weight:700;letter-spacing:0;padding:12px 17px;color:#ffd8aa;background:#ff971f16;border-color:#ff971f66}.cp-tech .cp-tech-feature:nth-child(2){color:#efcfff;background:#b975df20;border-color:#c588e175}
+
+.cp-film{grid-column:1/-1;min-width:0;width:100%;margin-top:10px}.cp-film-player{aspect-ratio:auto;overflow:hidden}.cp-film-player .scroll-video{aspect-ratio:16/9;height:auto}.cp-film-player .video-controls{position:relative;padding:14px 18px;background:#180c24;flex-wrap:wrap}.cp-film .cinema-caption{margin-bottom:16px;gap:14px;flex-wrap:wrap}@media(max-width:760px){.cp-film{max-width:420px;justify-self:center}.cp-film-player .scroll-video{aspect-ratio:9/16}.cp-film-player .video-controls button{min-height:44px;font-size:11px}.cp-film .cinema-caption{font-size:9px}}
