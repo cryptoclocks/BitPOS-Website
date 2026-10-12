@@ -37,3 +37,6 @@ img{height:auto}body{overflow-x:clip}.photo-card img,.tablet-visual img,.film-im
 .scroll-video{aspect-ratio:16/9;height:auto;background:#100718}
 .video-controls{position:relative;inset:auto;background:#21102f;padding:14px 18px;border-top:1px solid #ffffff15;min-height:66px}
 @media(max-width:760px){.video-controls{padding:10px;min-height:58px}.scroll-video{aspect-ratio:16/9}}
+.demo-launch{margin:0 0 28px;scroll-margin-top:110px}.demo-label{display:block;font-size:8px;font-weight:700;letter-spacing:.18em;color:#bea3cc;margin-bottom:12px}.demo-links{display:flex;flex-wrap:wrap;gap:10px}.demo-button{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;min-height:44px;border-radius:11px;border:1px solid #d9b5ef45;background:#ffffff08;color:#f1ddfc;font-size:11px;font-weight:650;transition:background .2s,border-color .2s,transform .2s}.demo-button svg{width:17px;height:17px;color:#ffb562}.demo-button:hover{background:#78369a50;border-color:#d9b5ef80;transform:translateY(-2px)}.hero-buttons{margin-bottom:24px}
+@media(max-width:760px){.demo-launch{margin-bottom:23px}.demo-label{font-size:7px}.demo-links{gap:8px}.demo-button{font-size:10px;padding:11px 13px;gap:8px}.demo-button svg{width:16px;height:16px}.nav-cta{font-size:9px}}
+@media(min-width:1101px){.hero{min-height:990px;height:max(990px,100svh);max-height:1200px}}
