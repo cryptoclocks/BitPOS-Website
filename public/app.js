@@ -65,7 +65,7 @@ function updateScroll(){scrollPending=false;const y=window.scrollY;const max=doc
 if(!paused){desiredFrame=Math.round(progress*90);drawFrame();}updateBenefits();lastY=y;}
 function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
 window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});requestScroll();
-function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-cinema').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
+function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-cinema').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
 $('.motion-toggle').addEventListener('click',()=>setMotion(!paused));reduced.addEventListener('change',e=>setMotion(e.matches));setMotion(paused);
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){$$('.magnetic').forEach(button=>{button.addEventListener('pointermove',e=>{if(paused)return;const r=button.getBoundingClientRect();button.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`;});button.addEventListener('pointerleave',()=>button.style.transform='');});}
 document.addEventListener('visibilitychange',()=>{document.documentElement.classList.toggle('tab-hidden',document.hidden);});
