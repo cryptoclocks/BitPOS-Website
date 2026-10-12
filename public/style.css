@@ -12,3 +12,4 @@ img{height:auto}body{overflow-x:clip}.photo-card img,.tablet-visual img,.film-im
 
 /* Keep a meaningful product still before loading or when motion is reduced. */
 #anatomy-canvas{opacity:0;transition:opacity .3s}.sequence-ready #anatomy-canvas{opacity:1}
+.motion-paused .anatomy{height:auto}.motion-paused .anatomy-sticky{position:relative}
