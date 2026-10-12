@@ -83,7 +83,8 @@ new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!modelS
 // Try audible playback; browser-blocked autoplay falls back to muted until a gesture.
 const players=$$('[data-player]');
 let soundUnlocked=false;
-function labelPlayer(root){const v=$('video',root);const th=language==='th';$('.inline-play span',root).textContent=v.paused?(th?'เล่น':'Play'):(th?'หยุด':'Pause');$('.inline-play',root).dataset.playing=String(!v.paused);$('.inline-play',root).setAttribute('aria-label',v.paused?'Play video':'Pause video');$('.inline-sound span',root).textContent=v.muted?(th?'แตะเปิดเสียง':'Enable sound'):(th?'เปิดเสียงอยู่':'Sound on');$('.inline-sound',root).setAttribute('aria-pressed',String(!v.muted));$('.inline-sound',root).setAttribute('aria-label',v.muted?'Enable video sound':'Mute video');}
+function labelPlayer(root){const v=$('video',root),th=language==='th',play=$('.inline-play',root),sound=$('.inline-sound',root),full=$('.inline-full',root),youtube=$('.video-controls a',root);const playLabel=v.paused?(th?'เล่นวิดีโอ':'Play video'):(th?'หยุดชั่วคราว':'Pause video'),soundLabel=v.muted?(th?'เปิดเสียง':'Enable sound'):(th?'ปิดเสียง':'Mute video');play.dataset.playing=String(!v.paused);play.setAttribute('aria-label',playLabel);play.title=playLabel;$('.inline-play span',root).textContent=playLabel;sound.setAttribute('aria-pressed',String(!v.muted));sound.setAttribute('aria-label',soundLabel);sound.title=soundLabel;sound.dataset.muted=String(v.muted);$('.inline-sound span',root).textContent=soundLabel;full.title=th?'เต็มจอ':'Fullscreen';full.setAttribute('aria-label',full.title);if(youtube){youtube.title=th?'ดูบน YouTube':'Watch on YouTube';youtube.setAttribute('aria-label',youtube.title);}}
+
 function loadVideo(v){if(!v.getAttribute('src')){const portrait=v.dataset.portraitSrc&&matchMedia('(max-width:760px)').matches;v.src=portrait?v.dataset.portraitSrc:v.dataset.src;if(portrait&&v.dataset.portraitPoster)v.poster=v.dataset.portraitPoster;v.load();}}
 async function playVideo(v){
  loadVideo(v);players.forEach(p=>{const other=$('video',p);if(other!==v)other.pause();});
@@ -102,6 +103,9 @@ function unlockVideoSound(event){
 document.addEventListener('pointerdown',unlockVideoSound);document.addEventListener('keydown',unlockVideoSound);
 players.forEach(root=>{
  const v=$('video',root);v.muted=false;v.volume=.45;
+ const youtube=$('.video-controls a',root);if(youtube)youtube.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10 9 6 3-6 3z" fill="currentColor" stroke="none"/></svg>';
+ $('.inline-full',root).innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
  const timeline=document.createElement('div');timeline.className='video-timeline';
  const elapsed=document.createElement('span'),total=document.createElement('span'),seek=document.createElement('input');
  elapsed.className='video-elapsed';total.className='video-duration';seek.className='video-seek';seek.type='range';seek.min='0';seek.max='0';seek.step='0.1';seek.value='0';seek.disabled=true;
