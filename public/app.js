@@ -102,6 +102,17 @@ function unlockVideoSound(event){
 document.addEventListener('pointerdown',unlockVideoSound);document.addEventListener('keydown',unlockVideoSound);
 players.forEach(root=>{
  const v=$('video',root);v.muted=false;v.volume=.45;
+ const timeline=document.createElement('div');timeline.className='video-timeline';
+ const elapsed=document.createElement('span'),total=document.createElement('span'),seek=document.createElement('input');
+ elapsed.className='video-elapsed';total.className='video-duration';seek.className='video-seek';seek.type='range';seek.min='0';seek.max='0';seek.step='0.1';seek.value='0';seek.disabled=true;
+ timeline.append(elapsed,seek,total);$('.video-controls',root).prepend(timeline);
+ const timeLabel=seconds=>{const n=Math.max(0,Math.floor(seconds||0));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');};
+ let dragging=false;
+ function updateTimeline(){const duration=Number.isFinite(v.duration)?v.duration:0;seek.disabled=duration<=0;seek.max=String(duration);if(!dragging)seek.value=String(v.currentTime||0);elapsed.textContent=timeLabel(dragging?Number(seek.value):v.currentTime);total.textContent=duration?timeLabel(duration):'--:--';seek.setAttribute('aria-label',language==='th'?'เลื่อนเวลาวิดีโอ':'Seek video');seek.setAttribute('aria-valuetext',elapsed.textContent+' / '+total.textContent);seek.style.setProperty('--seek-progress',duration?Number(seek.value)/duration*100+'%':'0%');}
+ seek.addEventListener('input',()=>{dragging=true;if(Number.isFinite(v.duration))v.currentTime=Math.min(v.duration,Math.max(0,Number(seek.value)));updateTimeline();});
+ seek.addEventListener('change',()=>{dragging=false;updateTimeline();});seek.addEventListener('blur',()=>{dragging=false;updateTimeline();});
+ ['timeupdate','durationchange','loadedmetadata','seeked','emptied'].forEach(event=>v.addEventListener(event,updateTimeline));$('.lang').addEventListener('click',updateTimeline);updateTimeline();
+
  let onScreen=false, manuallyPaused=false;
  new IntersectionObserver(entries=>{if(entries[0].isIntersecting)loadVideo(v);},{rootMargin:'250px'}).observe(root);
  new IntersectionObserver(entries=>{onScreen=entries[0].isIntersecting;if(onScreen&&!paused&&!document.hidden&&!manuallyPaused)playVideo(v);else v.pause();},{threshold:root.closest('.hero-cinema')?.2:.55}).observe(root);
