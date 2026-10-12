@@ -1,0 +1,62 @@
+{
+  "assets": [
+    {
+      "file": "mini-idle.webp",
+      "source": "presentation/assets/product/posclock-idle.png"
+    },
+    {
+      "file": "mini-qr.webp",
+      "source": "presentation/assets/product/posclock-qr.png"
+    },
+    {
+      "file": "mini-paid.webp",
+      "source": "presentation/assets/product/posclock-paid.png"
+    },
+    {
+      "file": "cafe.webp",
+      "source": "BitPOS-Motion/public/product/posclock-cafe-lifestyle.jpg"
+    },
+    {
+      "file": "table.webp",
+      "source": "BitPOS-Motion/public/product/table-ordering-cafe.jpg"
+    },
+    {
+      "file": "ai-table.webp",
+      "source": "BitPOS-Motion/public/product/ai-table-offer-cafe.jpg"
+    },
+    {
+      "file": "merchant.webp",
+      "source": "asset-pack/video/merchant-pos-current.png"
+    },
+    {
+      "file": "logo.webp",
+      "source": "asset-pack/brand/bitpos-logo-large.png"
+    },
+    {
+      "file": "real-cafe.webp",
+      "source": "RealUse/media/cafe-table-ordering.jpg"
+    },
+    {
+      "file": "demo-poster.webp",
+      "source": "RealUse/media/bitpos_table-poster.jpg"
+    },
+    {
+      "file": "latte.webp",
+      "source": "presentation/assets/latte.jpg"
+    },
+    {
+      "file": "croissant.webp",
+      "source": "presentation/assets/croissant.jpg"
+    },
+    {
+      "file": "collectible.webp",
+      "source": "asset-pack/collectibles/espresso-orbit.png"
+    },
+    {
+      "file": "mini-order.webp",
+      "source": "presentation/assets/product/posclock-order.png"
+    }
+  ],
+  "sequence": "BitPOS-Motion/public/anatomy/anatomy-frames-part01..07.zip; Blender-rendered product frames 60..600 at step 6",
+  "notes": "Product lifestyle images and collectible artwork are existing concept visuals; real-cafe and demo-poster are cafe trial evidence. No private customer records included."
+}

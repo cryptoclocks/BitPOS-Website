@@ -1,0 +1,68 @@
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+let paused = reduced.matches;
+let language = 'en';
+let activeStep = 0;
+let soundEnabled = false;
+const english = Object.fromEntries($$('[data-i18n]').map(el => [el.dataset.i18n, el.innerHTML]));
+const thai = {
+navExperience:'ประสบการณ์ใหม่', navMini:'รู้จัก Mini', navCafe:'สำหรับร้านกาแฟ', navPos:'เข้าสู่ POS ↗', talk:'คุยกับเรา',
+heroLabel:'เชื่อมทุกช่วงเวลาดี ๆ ในร้านกาแฟ',hero1:'เครื่องเล็ก ๆ',hero2:'เติมพลังให้',hero3:'ร้านกาแฟคุณ',heroDescription:'ตั้งแต่สั่งแก้วแรก จนถึงกลับมาอีกครั้ง เชื่อมโต๊ะ การชำระเงิน และลูกค้าด้วย BitPOS Mini',explore:'ลองสัมผัสประสบการณ์',watchPitch:'ชมวิดีโอ 2 นาที',builtSolana:'สร้างบน Solana เพื่อช่วงเวลาในชีวิตจริง',scanOrder:'สแกน สั่ง แล้วนั่งชิล',connection:'จอเล็ก ๆ ที่เชื่อมเราให้ใกล้กัน',onEveryTable:'ทั้งหน้าเคาน์เตอร์ และบนทุกโต๊ะ',scroll:'เลื่อนเพื่อสำรวจ',
+chapter1:'01 — ประสบการณ์ใหม่ในร้านกาแฟ',flow1:'โต๊ะของคุณ',flow2:'จังหวะของคุณ',flowDescription:'เลือกเมนูบนมือถือ ชำระผ่านกระเป๋าของคุณ แล้วให้ร้านจัดการต่อ คุณจึงมีเวลาอยู่กับช่วงเวลาดี ๆ',step1:'สแกนแล้วเลือก',step1sub:'เมนูโปรด อยู่ตรงที่คุณนั่ง',step2:'จ่ายผ่านกระเป๋าของคุณ',step2sub:'ชำระบน Solana ร้านออกค่าธรรมเนียมเครือข่ายให้',step3:'ช่วงเวลาเล็ก ๆ ที่น่าประทับใจ',step3sub:'เห็นสถานะชำระชัดเจนบนจอประจำโต๊ะ',preview:'ลองสลับตัวอย่างหน้าจอ',soundOff:'ปิดเสียงอยู่',
+chapter2:'02 — รู้จัก BITPOS MINI',mini1:'เล็กอย่างตั้งใจ',mini2:'ความเป็นไปได้ไม่เล็ก',touch:'แตะเพื่อเริ่มสิ่งดี ๆ',touchsub:'จอทัชสกรีน 3.5 นิ้ว · 480 × 320',audio:'ข่าวดี มีเสียงของมัน',audiosub:'ภาพตอบสนอง พร้อมเสียงแจ้งเตือน',scrollInside:'เลื่อนเพื่อดูใกล้ขึ้น',
+chapter3:'03 — เชื่อมทุกมุมของร้าน',cafeTitle:'ให้เวลากับร้าน<br>ลดงานเดินไปมา',cafeDescription:'ทีมและลูกค้าเห็นภาพเดียวกัน จัดการออเดอร์ในที่เดียว มีจอเล็ก ๆ ช่วยให้ทุกคนรู้ความคืบหน้า',tableSide:'ประสบการณ์ใหม่บนโต๊ะ',tableTitle:'พอดีกับโต๊ะ<br>เข้ากับร้านคุณ',walletTitle:'กาแฟเป็นของคุณ<br>ค่าเครือข่ายร้านดูแล',walletDescription:'ลูกค้าเซ็นชำระ ร้านสนับสนุนค่าธรรมเนียมเครือข่าย ลูกค้าจึงไม่ต้องมี SOL สำหรับค่า gas',devnetNote:'ระบบปัจจุบันใช้ test USDG บน Solana devnet',merchantLabel:'พื้นที่ทำงานสำหรับร้าน',merchantTitle:'เห็นภาพรวม<br>ดูแลทุกรายละเอียด',merchantDescription:'เมนู ออเดอร์ ข้อมูลลูกค้า และจอประจำโต๊ะ ในพื้นที่ทำงานที่ออกแบบเพื่อร้านกาแฟ',openWorkspace:'เปิดระบบสำหรับร้านค้า',developing:'อยู่ระหว่างพัฒนา',aiTitle:'เหตุผลดี ๆ<br>ที่จะกลับมา',aiDescription:'AI ช่วยคิดข้อเสนอที่คุณอนุมัติ ของสะสมที่ลูกค้าจดจำ บทต่อไปของร้านคุณ',seeNext:'ดูสิ่งที่กำลังพัฒนา',
+realLabel:'จากโต๊ะทำงาน สู่โต๊ะในร้านกาแฟ',real1:'โต๊ะจริง',real2:'ช่วงเวลาจริง',realDescription:'ชมการสั่งและชำระเงินบนฮาร์ดแวร์จริง จากการทดลองในร้านกาแฟ',watchDemo:'ชมการทดลองในร้าน',demoDuration:'2 นาที 32 วินาที · SOLANA DEVNET',
+chapter4:'04 — สิ่งที่กำลังพัฒนา',roadmap:'แผนพัฒนาผลิตภัณฑ์',next1:'การกลับมาอีกครั้ง',next2:'เริ่มตรงนี้',nextDescription:'เรากำลังต่อยอดจากการชำระเงิน สู่การต้อนรับลูกค้ากลับมา โดยร้านเป็นผู้ควบคุม',aiLabel:'โปรโมชั่นจาก AI',aiNextTitle:'ถูกจังหวะ<br>ตรงใจลูกค้า',aiNextDescription:'ร่างโปรโมชั่น ตรวจทาน เลือกโต๊ะ แล้วส่ง AI ช่วยคิด แต่คุณคือผู้ตัดสินใจ',loyaltyLabel:'NFT และสิทธิพิเศษ',loyaltyTitle:'รางวัลเล็ก ๆ<br>ความสัมพันธ์ยาวนาน',loyaltyDescription:'ภาพสะสม สิทธิพิเศษในร้าน และเหตุผลที่จะกลับมา ประสบการณ์สะสมแต้มที่ออกแบบเพื่อลูกค้าของคุณ',coffeeReady:'กาแฟของคุณ<br>พร้อมแล้ว',pickCounter:'รับได้ที่เคาน์เตอร์',pickupLabel:'แจ้งเตือนประจำโต๊ะ',pickupTitle:'ลดเสียงเรียก<br>เพิ่มเวลาพูดคุย',pickupDescription:'กดออเดอร์พร้อมรับในระบบร้าน ส่งภาพแจ้งเตือนพร้อมเสียงไปยังโต๊ะที่ถูกต้อง',roadmapNote:'AI โปรโมชั่น NFT สะสมแต้ม การแจ้งรับสินค้า และ stablecoin เพิ่มเติม อยู่ระหว่างพัฒนา การทดลองในร้านใช้ test USDG บน Solana devnet',
+contactLabel:'เรื่องดี ๆ เริ่มจากการพูดคุย',contact1:'ร้านกาแฟคุณ',contact2:'การเชื่อมต่อครั้งใหม่',contactDescription:'สร้างจากประเทศไทย คิดไปไกลกว่าพรมแดน<br>ให้ BitPOS มาอยู่บนโต๊ะของคุณ',source:'สำรวจซอร์สโค้ด ↗',guide:'คู่มือผลิตภัณฑ์',pauseMotion:'พักภาพเคลื่อนไหว',openYoutube:'เปิดบน YouTube ↗'
+};
+const stageMessages = {
+en:['The next good thing starts with a scan.','Your order. Your wallet. A simpler checkout.','Payment received. A little moment worth celebrating.'],
+th:['สิ่งดี ๆ ครั้งต่อไป เริ่มจากการสแกน','ออเดอร์ของคุณ กระเป๋าของคุณ ชำระง่ายขึ้น','ชำระแล้ว ช่วงเวลาเล็ก ๆ ที่น่าฉลอง']
+};
+function refreshControls(){
+$('.sound-toggle span').textContent = language === 'th' ? (soundEnabled ? 'เปิดเสียงอยู่' : 'ปิดเสียงอยู่') : (soundEnabled ? 'Sound on' : 'Sound off');
+$('.motion-toggle').textContent = language === 'th' ? (paused ? 'เปิดภาพเคลื่อนไหว' : 'พักภาพเคลื่อนไหว') : (paused ? 'Resume motion' : 'Pause motion');
+$('#stage-text').textContent=stageMessages[language][activeStep];
+}
+$('.lang').addEventListener('click',()=>{
+language=language==='en'?'th':'en';document.documentElement.lang=language;
+$$('[data-i18n]').forEach(el=>{el.innerHTML=(language==='th'?thai:english)[el.dataset.i18n]??english[el.dataset.i18n];});
+$('.lang').textContent=language==='en'?'TH':'EN';$('.lang').setAttribute('aria-label',language==='en'?'Switch to Thai':'Switch to English');refreshControls();requestScroll();
+});
+const menu=$('.menu-toggle');menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation');$('#mobile-nav').hidden=!open;});
+$$('#mobile-nav a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open navigation');$('#mobile-nav').hidden=true;}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.setAttribute('aria-expanded','false');$('#mobile-nav').hidden=true;}});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+if(!paused)document.documentElement.classList.add('js-motion');
+$$('.reveal').forEach(el=>observer.observe(el));
+const audio=new Audio('/assets/payment-success.wav');audio.preload='none';audio.volume=.25;
+$('.sound-toggle').addEventListener('click',()=>{soundEnabled=!soundEnabled;$('.sound-toggle').setAttribute('aria-pressed',String(soundEnabled));$('.sound-toggle').setAttribute('aria-label',soundEnabled?'Disable preview sound':'Enable preview sound');refreshControls();if(soundEnabled){audio.currentTime=0;audio.play().catch(()=>{});}});
+const stepImages=['mini-order.webp','mini-qr.webp','mini-paid.webp'];
+stepImages.forEach(src=>{const im=new Image();im.src='/assets/'+src;});
+let stepTransition;
+$$('.step').forEach(button=>button.addEventListener('click',()=>{
+activeStep=Number(button.dataset.step);$$('.step').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
+clearTimeout(stepTransition);$('.device-preview').classList.add('changing');
+stepTransition=setTimeout(()=>{const img=$('#experience-device');img.src='/assets/'+stepImages[activeStep];img.alt=['BitPOS Mini scan-to-order screen preview','BitPOS Mini payment QR screen preview','BitPOS Mini payment received screen preview'][activeStep];$('.device-preview').classList.remove('changing');refreshControls();if(activeStep===2){if(!paused)celebrate();if(soundEnabled){audio.currentTime=0;audio.play().catch(()=>{});}}},paused?0:160);
+}));
+function celebrate(){const root=$('.confetti');root.replaceChildren();for(let i=0;i<24;i++){const p=document.createElement('i');p.style.setProperty('--x',`${(Math.random()-.5)*360}px`);p.style.setProperty('--y',`${150+Math.random()*210}px`);p.style.setProperty('--r',`${Math.random()*800}deg`);p.style.background=['#ff8500','#64188a','#e0b8ef','#91ad67'][i%4];p.style.left=`${25+Math.random()*50}%`;p.style.animationDelay=`${Math.random()*.12}s`;root.append(p);}setTimeout(()=>root.replaceChildren(),1800);}
+const dialog=$('.video-dialog');let videoTrigger;
+$$('.video-open').forEach(btn=>btn.addEventListener('click',()=>{
+videoTrigger=btn;$('#video-title').textContent=btn.dataset.title;$('.youtube-link').href=`https://youtu.be/${btn.dataset.video}`;
+const frame=document.createElement('iframe');frame.src=`https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0`;frame.title=btn.dataset.title;frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;$('.video-frame').replaceChildren(frame);dialog.showModal();
+}));
+function closeVideo(){dialog.close();}
+$('.video-close').addEventListener('click',closeVideo);dialog.addEventListener('click',e=>{if(e.target===dialog){const b=dialog.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeVideo();}});dialog.addEventListener('close',()=>{$('.video-frame').replaceChildren();videoTrigger?.focus();});
+const anatomy=$('.anatomy');const canvas=$('#anatomy-canvas');const context=canvas.getContext('2d');const frames=new Map();let loadStarted=false;let frameIndex=-1;let desiredFrame=0;let scrollPending=false;let lastY=0;
+function drawFrame(){if(!context)return;const img=frames.get(desiredFrame);if(img&&frameIndex!==desiredFrame){context.drawImage(img,0,0,canvas.width,canvas.height);frameIndex=desiredFrame;}}
+async function loadSequence(){if(loadStarted||paused)return;loadStarted=true;let cursor=0;async function worker(){while(cursor<91){const i=cursor++;await new Promise(resolve=>{const img=new Image();img.onload=()=>{frames.set(i,img);drawFrame();resolve();};img.onerror=resolve;img.src=`/assets/sequence/${String(i).padStart(3,'0')}.webp`;});}}await Promise.all(Array.from({length:4},worker));requestScroll();}
+const sequenceObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))loadSequence();},{rootMargin:'650px'});sequenceObserver.observe(anatomy);
+function updateScroll(){scrollPending=false;const y=window.scrollY;const max=document.documentElement.scrollHeight-innerHeight;$('.scroll-progress').style.transform=`scaleX(${max>0?y/max:0})`;const rect=anatomy.getBoundingClientRect();const progress=Math.min(1,Math.max(0,-rect.top/Math.max(1,anatomy.offsetHeight-innerHeight)));$('.anatomy-meter span').style.transform=`scaleX(${progress})`;$('.anatomy-percent').textContent=String(Math.round(progress*100)).padStart(2,'0');anatomy.classList.toggle('exploded',progress>.27&&progress<.85);
+if(!paused){desiredFrame=Math.round(progress*90);drawFrame();$('.film-image').style.transform=`translateY(${Math.max(-35,Math.min(35,($('.film-section').getBoundingClientRect().top-innerHeight*.4)*.08))}px) scale(1.08)`;}lastY=y;}
+function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
+window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});requestScroll();
+function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-product').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
+$('.motion-toggle').addEventListener('click',()=>setMotion(!paused));reduced.addEventListener('change',e=>setMotion(e.matches));setMotion(paused);
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){$('.hero-product').addEventListener('pointermove',e=>{if(paused)return;const r=$('.hero-product').getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;$('.hero-product').style.transform=`perspective(1000px) rotateY(${x*12-6}deg) rotateX(${-y*8}deg)`;});$('.hero-product').addEventListener('pointerleave',()=>{$('.hero-product').style.transform='';});$$('.magnetic').forEach(button=>{button.addEventListener('pointermove',e=>{if(paused)return;const r=button.getBoundingClientRect();button.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`;});button.addEventListener('pointerleave',()=>button.style.transform='');});}
+document.addEventListener('visibilitychange',()=>{document.documentElement.classList.toggle('tab-hidden',document.hidden);});
