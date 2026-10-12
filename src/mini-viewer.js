@@ -44,7 +44,8 @@ export async function mountMini(host) {
     texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
     if(screen){screen.translateY(.12);screen.material=new THREE.MeshBasicMaterial({map:texture,side:THREE.FrontSide,toneMapped:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2});}
     const logo=new Image();logo.src='/assets/logo.webp';await logo.decode().catch(()=>{});
-    let step=0, visible=false, last=0, interactedUntil=0;
+    let step=Number(document.querySelector('.step.active')?.dataset.step??0), visible=false, last=0, manualOrbit=false;
+    const homeOrbit=new THREE.Spherical().setFromVector3(camera.position);
     function drawScreen(){
       const w=720,h=480;
       ctx.fillStyle='#241032';ctx.fillRect(0,0,w,h);
@@ -83,11 +84,11 @@ export async function mountMini(host) {
     host.prepend(renderer.domElement);host.classList.add('model-ready');
     host.dataset.modelLoaded='true';
     renderer.domElement.addEventListener('webglcontextlost',()=>{host.classList.remove('model-ready');},{once:true});
-    controls.addEventListener('start',()=>interactedUntil=performance.now()+8000);
+    controls.addEventListener('start',()=>{manualOrbit=true;});
     renderer.domElement.addEventListener('keydown',e=>{
       if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
-      e.preventDefault();interactedUntil=performance.now()+8000;
-      if(e.key==='Home'){camera.position.set(90,65,175);controls.target.set(0,0,0);}
+      e.preventDefault();manualOrbit=true;
+      if(e.key==='Home'){camera.position.set(90,65,175);controls.target.set(0,0,0);manualOrbit=false;}
       else{const spherical=new THREE.Spherical().setFromVector3(camera.position);spherical.theta+=e.key==='ArrowLeft'?.15:e.key==='ArrowRight'?-.15:0;spherical.phi+=e.key==='ArrowUp'?-.1:e.key==='ArrowDown'?.1:0;spherical.phi=THREE.MathUtils.clamp(spherical.phi,.35,Math.PI*.65);camera.position.setFromSpherical(spherical);}
       controls.update();renderer.render(scene,camera);
     });
@@ -98,7 +99,8 @@ export async function mountMini(host) {
     renderer.setAnimationLoop(now=>{
       if(!visible||document.hidden)return;
       const paused=document.documentElement.classList.contains('motion-paused');
-      controls.autoRotate=!paused&&now>interactedUntil;
+      controls.autoRotate=false;
+      if(!paused&&!manualOrbit){const orbit=homeOrbit.clone();orbit.theta+=Math.sin(now*.00018)*.26;orbit.phi+=Math.sin(now*.00013)*.035;camera.position.setFromSpherical(orbit);}
       controls.update(Math.min((now-last)/1000,.05));last=now;
       renderer.render(scene,camera);
     });
