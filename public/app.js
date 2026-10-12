@@ -62,7 +62,7 @@ function drawFrame(){if(!context)return;const img=frames.get(desiredFrame);if(im
 async function loadSequence(){if(loadStarted||paused)return;loadStarted=true;let cursor=0;async function worker(){while(cursor<91){const i=cursor++;await new Promise(resolve=>{const img=new Image();img.onload=()=>{frames.set(i,img);drawFrame();resolve();};img.onerror=resolve;img.src=`/assets/sequence/${String(i).padStart(3,'0')}.webp`;});}}await Promise.all(Array.from({length:4},worker));requestScroll();}
 const sequenceObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))loadSequence();},{rootMargin:'650px'});sequenceObserver.observe(anatomy);
 function updateScroll(){scrollPending=false;const y=window.scrollY;const max=document.documentElement.scrollHeight-innerHeight;$('.scroll-progress').style.transform=`scaleX(${max>0?y/max:0})`;const rect=anatomy.getBoundingClientRect();const progress=Math.min(1,Math.max(0,-rect.top/Math.max(1,anatomy.offsetHeight-innerHeight)));$('.anatomy-meter span').style.transform=`scaleX(${progress})`;$('.anatomy-percent').textContent=String(Math.round(progress*100)).padStart(2,'0');anatomy.classList.toggle('exploded',progress>.27&&progress<.85);
-if(!paused){desiredFrame=Math.round(progress*90);drawFrame();$('.film-image').style.transform=`translateY(${Math.max(-35,Math.min(35,($('.film-section').getBoundingClientRect().top-innerHeight*.4)*.08))}px) scale(1.08)`;}updateBenefits();lastY=y;}
+if(!paused){desiredFrame=Math.round(progress*90);drawFrame();}updateBenefits();lastY=y;}
 function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
 window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});requestScroll();
 function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-cinema').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
@@ -146,7 +146,7 @@ function updateBenefits(){
   });
   const stat=$('.benefit-stat',side), t=Math.max(0,Math.min(1,(p-.42)/.4));
   stat.style.opacity=String(.1+.9*t);stat.style.transform=`translateY(${(1-t)*30}px)`;
-  $('[data-counter]',side).textContent=String(Math.round(20*(1-Math.pow(1-t,3))));
+  $('[data-counter]',side).textContent=String(mobile||paused?20:Math.round(20*(1-Math.pow(1-t,3))));
  });
 }
 requestScroll();
