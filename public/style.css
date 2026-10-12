@@ -9,3 +9,6 @@
 /* Preserve image aspect ratios when responsive widths override HTML dimensions. */
 img{height:auto}body{overflow-x:clip}.photo-card img,.tablet-visual img,.film-image img,.offer-visual>img{height:100%}.anatomy-fallback{height:100%}
 @media(max-width:760px){.hero h1{font-size:clamp(46px,11.2vw,76px)}.hero-buttons .button{font-size:9px;padding:16px}.hero-buttons .button-text{padding-left:0;padding-right:0;font-size:8px}}
+
+/* Keep a meaningful product still before loading or when motion is reduced. */
+#anatomy-canvas{opacity:0;transition:opacity .3s}.sequence-ready #anatomy-canvas{opacity:1}
