@@ -10,7 +10,9 @@ Product website for BitPOS and BitPOS Mini, hosted independently from the mercha
 
 `npm run dev` serves `public/` at http://localhost:8891. `npm run build` creates `dist/`.
 
-Zero runtime dependencies. Native JavaScript drives the scroll-scrubbed Blender sequence, interactive device previews, video modal, language switch and motion controls. Assets are local; YouTube embeds load only after a video click. Preview sound is opt-in. Reduced-motion preferences are respected.
+Static output with a locally bundled Three.js viewer. Native JavaScript drives the scroll-scrubbed Blender sequence, rotatable STL-derived Mini model, automatically cycling screen textures, in-page video playback, bilingual copy, benefit counters and motion controls. Build dependencies are pinned in package-lock.json. Videos load near the viewport, autoplay muted when visible and pause offscreen; sound requires a click. Reduced-motion preferences disable automatic playback and screen cycling. A poster remains if WebGL is unavailable. YouTube remains an optional full-video link/modal.
+
+The benefit figures are illustrative pilot targets, not measured business results. No external model/CDN runtime is required. Run `npm ci` before building a fresh checkout.
 
 ## Deploy
 

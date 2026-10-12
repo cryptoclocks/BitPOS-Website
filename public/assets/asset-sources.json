@@ -55,8 +55,21 @@
     {
       "file": "mini-order.webp",
       "source": "presentation/assets/product/posclock-order.png"
+    },
+    {
+      "file": "model/bitpos-mini.glb",
+      "source": "BitPOS-Motion/blender/anatomy/BitPOS-Anatomy.blend; evaluated assembled meshes; original enclosure from CryptoClockPro/model/mynewcase.stl; source read-only"
+    },
+    {
+      "file": "video/bitpos-pitch.mp4",
+      "source": "BitPOS-Motion/renders/1011/BitPOS-Pitch-2min-upload.mp4; web-optimized H264/AAC"
+    },
+    {
+      "file": "video/bitpos-cafe-trial.mp4",
+      "source": "RealUse/export/BitPOS-Mini-Cafe-Demo-Music.mp4; web-optimized H264/AAC"
     }
   ],
   "sequence": "BitPOS-Motion/public/anatomy/anatomy-frames-part01..07.zip; Blender-rendered product frames 60..600 at step 6",
-  "notes": "Product lifestyle images and collectible artwork are existing concept visuals; real-cafe and demo-poster are cafe trial evidence. No private customer records included."
+  "notes": "Product lifestyle images and collectible artwork are existing concept visuals; real-cafe and demo-poster are cafe trial evidence. No private customer records included.",
+  "screen_preview": "Website-generated canvas illustration with selectable scan, checkout and paid states. Not a live checkout QR."
 }

@@ -16,6 +16,9 @@ realLabel:'จากโต๊ะทำงาน สู่โต๊ะในร�
 chapter4:'04 — สิ่งที่กำลังพัฒนา',roadmap:'แผนพัฒนาผลิตภัณฑ์',next1:'การกลับมาอีกครั้ง',next2:'เริ่มตรงนี้',nextDescription:'เรากำลังต่อยอดจากการชำระเงิน สู่การต้อนรับลูกค้ากลับมา โดยร้านเป็นผู้ควบคุม',aiLabel:'โปรโมชั่นจาก AI',aiNextTitle:'ถูกจังหวะ<br>ตรงใจลูกค้า',aiNextDescription:'ร่างโปรโมชั่น ตรวจทาน เลือกโต๊ะ แล้วส่ง AI ช่วยคิด แต่คุณคือผู้ตัดสินใจ',loyaltyLabel:'NFT และสิทธิพิเศษ',loyaltyTitle:'รางวัลเล็ก ๆ<br>ความสัมพันธ์ยาวนาน',loyaltyDescription:'ภาพสะสม สิทธิพิเศษในร้าน และเหตุผลที่จะกลับมา ประสบการณ์สะสมแต้มที่ออกแบบเพื่อลูกค้าของคุณ',coffeeReady:'กาแฟของคุณ<br>พร้อมแล้ว',pickCounter:'รับได้ที่เคาน์เตอร์',pickupLabel:'แจ้งเตือนประจำโต๊ะ',pickupTitle:'ลดเสียงเรียก<br>เพิ่มเวลาพูดคุย',pickupDescription:'กดออเดอร์พร้อมรับในระบบร้าน ส่งภาพแจ้งเตือนพร้อมเสียงไปยังโต๊ะที่ถูกต้อง',roadmapNote:'AI โปรโมชั่น NFT สะสมแต้ม การแจ้งรับสินค้า และ stablecoin เพิ่มเติม อยู่ระหว่างพัฒนา การทดลองในร้านใช้ test USDG บน Solana devnet',
 contactLabel:'เรื่องดี ๆ เริ่มจากการพูดคุย',contact1:'ร้านกาแฟคุณ',contact2:'การเชื่อมต่อครั้งใหม่',contactDescription:'สร้างจากประเทศไทย คิดไปไกลกว่าพรมแดน<br>ให้ BitPOS มาอยู่บนโต๊ะของคุณ',source:'สำรวจซอร์สโค้ด ↗',guide:'คู่มือผลิตภัณฑ์',pauseMotion:'พักภาพเคลื่อนไหว',openYoutube:'เปิดบน YouTube ↗'
 };
+Object.assign(thai,{
+dragModel:'ลากเพื่อหมุนดู · 360°',autoScreens:'สลับจออัตโนมัติ',pitchLabel:'เรื่องราวทั้งหมด ในสองนาที',pitchHeading:'จอเล็ก ๆ<br>เรื่องราวที่ใหญ่กว่า',pitchIntro:'ดูว่า BitPOS เชื่อมประสบการณ์ในร้านกาแฟเข้าด้วยกันอย่างไร',benefitLabel:'ดีต่อร้านคุณ ดีต่อระบบนิเวศ',forCafe:'สำหรับร้านกาแฟ',benefitCafeTitle:'รอน้อยลง<br>กลับมาบ่อยขึ้น',queueTitle:'ลดคิวหน้าร้าน',queueText:'ลูกค้าสั่งและจ่ายจากโต๊ะได้เลย',dataTitle:'รู้จักลูกค้าดีขึ้น',dataText:'ประวัติที่ลูกค้ายินยอม แยกตามโต๊ะ',repeatTitle:'เพิ่มการกลับมาใช้บริการ',repeatText:'ข้อเสนอและรางวัลที่อยากกลับมารับ',pilotTarget:'เป้าหมายช่วงทดลอง',repeatMetric:'เพิ่มอัตราการกลับมา',forSolana:'สำหรับ SOLANA',benefitSolanaTitle:'Stablecoin<br>บนโต๊ะร้านกาแฟ',stableTitle:'การใช้ Stablecoin ในชีวิตจริง',stableText:'เปลี่ยนออเดอร์ประจำวันเป็นการจ่ายบนเชน',gasTitle:'ลูกค้าไม่ต้องมี SOL สำหรับ gas',gasText:'ร้านสนับสนุนค่าธรรมเนียมเครือข่าย',usersTitle:'ต้อนรับผู้ใช้กลุ่มใหม่',usersText:'เข้าถึงผู้คนในสถานที่ที่คุ้นเคย',adoptionTarget:'เป้าหมายช่วงทดลอง',paidMetric:'ออเดอร์ที่จ่ายบน Solana',targetNote:'ตัวเลขเป้าหมายสำหรับการทดลอง ยังไม่ใช่ผลที่วัดได้จริง การกลับมาใช้บริการเทียบกับค่าฐานของร้านที่เข้าร่วม'
+});
 const stageMessages = {
 en:['The next good thing starts with a scan.','Your order. Your wallet. A simpler checkout.','Payment received. A little moment worth celebrating.'],
 th:['สิ่งดี ๆ ครั้งต่อไป เริ่มจากการสแกน','ออเดอร์ของคุณ กระเป๋าของคุณ ชำระง่ายขึ้น','ชำระแล้ว ช่วงเวลาเล็ก ๆ ที่น่าฉลอง']
@@ -44,12 +47,12 @@ let stepTransition;
 $$('.step').forEach(button=>button.addEventListener('click',()=>{
 activeStep=Number(button.dataset.step);$$('.step').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
 clearTimeout(stepTransition);$('.device-preview').classList.add('changing');
-stepTransition=setTimeout(()=>{const img=$('#experience-device');img.src='/assets/'+stepImages[activeStep];img.alt=['BitPOS Mini scan-to-order screen preview','BitPOS Mini payment QR screen preview','BitPOS Mini payment received screen preview'][activeStep];$('.device-preview').classList.remove('changing');refreshControls();if(activeStep===2){if(!paused)celebrate();if(soundEnabled){audio.currentTime=0;audio.play().catch(()=>{});}}},paused?0:160);
+stepTransition=setTimeout(()=>{const img=$('#experience-device');img.src='/assets/'+stepImages[activeStep];img.alt=['BitPOS Mini scan-to-order screen preview','BitPOS Mini payment QR screen preview','BitPOS Mini payment received screen preview'][activeStep];$('.device-preview').classList.remove('changing');refreshControls();window.dispatchEvent(new CustomEvent('mini-step',{detail:activeStep}));if(activeStep===2){if(!paused)celebrate();if(soundEnabled){audio.currentTime=0;audio.play().catch(()=>{});}}},paused?0:160);
 }));
 function celebrate(){const root=$('.confetti');root.replaceChildren();for(let i=0;i<24;i++){const p=document.createElement('i');p.style.setProperty('--x',`${(Math.random()-.5)*360}px`);p.style.setProperty('--y',`${150+Math.random()*210}px`);p.style.setProperty('--r',`${Math.random()*800}deg`);p.style.background=['#ff8500','#64188a','#e0b8ef','#91ad67'][i%4];p.style.left=`${25+Math.random()*50}%`;p.style.animationDelay=`${Math.random()*.12}s`;root.append(p);}setTimeout(()=>root.replaceChildren(),1800);}
 const dialog=$('.video-dialog');let videoTrigger;
 $$('.video-open').forEach(btn=>btn.addEventListener('click',()=>{
-videoTrigger=btn;$('#video-title').textContent=btn.dataset.title;$('.youtube-link').href=`https://youtu.be/${btn.dataset.video}`;
+videoTrigger=btn;$$('.scroll-video').forEach(v=>v.pause());$('#video-title').textContent=btn.dataset.title;$('.youtube-link').href=`https://youtu.be/${btn.dataset.video}`;
 const frame=document.createElement('iframe');frame.src=`https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0`;frame.title=btn.dataset.title;frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;$('.video-frame').replaceChildren(frame);dialog.showModal();
 }));
 function closeVideo(){dialog.close();}
@@ -59,10 +62,61 @@ function drawFrame(){if(!context)return;const img=frames.get(desiredFrame);if(im
 async function loadSequence(){if(loadStarted||paused)return;loadStarted=true;let cursor=0;async function worker(){while(cursor<91){const i=cursor++;await new Promise(resolve=>{const img=new Image();img.onload=()=>{frames.set(i,img);drawFrame();resolve();};img.onerror=resolve;img.src=`/assets/sequence/${String(i).padStart(3,'0')}.webp`;});}}await Promise.all(Array.from({length:4},worker));requestScroll();}
 const sequenceObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))loadSequence();},{rootMargin:'650px'});sequenceObserver.observe(anatomy);
 function updateScroll(){scrollPending=false;const y=window.scrollY;const max=document.documentElement.scrollHeight-innerHeight;$('.scroll-progress').style.transform=`scaleX(${max>0?y/max:0})`;const rect=anatomy.getBoundingClientRect();const progress=Math.min(1,Math.max(0,-rect.top/Math.max(1,anatomy.offsetHeight-innerHeight)));$('.anatomy-meter span').style.transform=`scaleX(${progress})`;$('.anatomy-percent').textContent=String(Math.round(progress*100)).padStart(2,'0');anatomy.classList.toggle('exploded',progress>.27&&progress<.85);
-if(!paused){desiredFrame=Math.round(progress*90);drawFrame();$('.film-image').style.transform=`translateY(${Math.max(-35,Math.min(35,($('.film-section').getBoundingClientRect().top-innerHeight*.4)*.08))}px) scale(1.08)`;}lastY=y;}
+if(!paused){desiredFrame=Math.round(progress*90);drawFrame();$('.film-image').style.transform=`translateY(${Math.max(-35,Math.min(35,($('.film-section').getBoundingClientRect().top-innerHeight*.4)*.08))}px) scale(1.08)`;}updateBenefits();lastY=y;}
 function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
 window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});requestScroll();
 function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-product').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
 $('.motion-toggle').addEventListener('click',()=>setMotion(!paused));reduced.addEventListener('change',e=>setMotion(e.matches));setMotion(paused);
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){$('.hero-product').addEventListener('pointermove',e=>{if(paused)return;const r=$('.hero-product').getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;$('.hero-product').style.transform=`perspective(1000px) rotateY(${x*12-6}deg) rotateX(${-y*8}deg)`;});$('.hero-product').addEventListener('pointerleave',()=>{$('.hero-product').style.transform='';});$$('.magnetic').forEach(button=>{button.addEventListener('pointermove',e=>{if(paused)return;const r=button.getBoundingClientRect();button.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`;});button.addEventListener('pointerleave',()=>button.style.transform='');});}
 document.addEventListener('visibilitychange',()=>{document.documentElement.classList.toggle('tab-hidden',document.hidden);});
+
+// The same order/pay/paid story is selectable or automatically cycled on the 3D screen.
+let cycleScreens=true, stageVisible=false, cycleTimer=0;
+const cycleButton=$('.screen-cycle');
+function cycleLabel(){cycleButton.textContent=language==='th'?(cycleScreens?'สลับจออัตโนมัติ':'พักการสลับจอ'):(cycleScreens?'Auto screens on':'Auto screens paused');cycleButton.setAttribute('aria-pressed',String(cycleScreens));}
+cycleButton.addEventListener('click',()=>{cycleScreens=!cycleScreens;cycleLabel();cycleTimer=performance.now();});
+$$('.step').forEach(b=>b.addEventListener('click',()=>{cycleTimer=performance.now();}));
+new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(stageVisible)cycleTimer=performance.now();},{threshold:.3}).observe($('.experience-stage'));
+setInterval(()=>{if(cycleScreens&&stageVisible&&!paused&&!document.hidden&&performance.now()-cycleTimer>4800){cycleTimer=performance.now();$$('.step')[(activeStep+1)%3].click();}},700);
+let modelStarted=false;
+new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!modelStarted){modelStarted=true;import('/mini-viewer.js').then(m=>m.mountMini($('.model-host'))).catch(()=>{});}},{rootMargin:'450px'}).observe($('.model-host'));
+// Videos are same-origin, muted on first play, and paused outside the viewport.
+const players=$$('[data-player]');
+function labelPlayer(root){const v=$('video',root);const th=language==='th';$('.inline-play span',root).textContent=v.paused?(th?'เล่น':'Play'):(th?'หยุด':'Pause');$('.inline-play',root).dataset.playing=String(!v.paused);$('.inline-play',root).setAttribute('aria-label',v.paused?'Play video':'Pause video');$('.inline-sound span',root).textContent=v.muted?(th?'ปิดเสียงอยู่':'Sound off'):(th?'เปิดเสียงอยู่':'Sound on');$('.inline-sound',root).setAttribute('aria-pressed',String(!v.muted));$('.inline-sound',root).setAttribute('aria-label',v.muted?'Enable video sound':'Mute video');}
+function loadVideo(v){if(!v.getAttribute('src')){v.src=v.dataset.src;v.load();}}
+function playVideo(v){loadVideo(v);players.forEach(p=>{const other=$('video',p);if(other!==v)other.pause();});return v.play().catch(()=>{});}
+players.forEach(root=>{
+ const v=$('video',root);v.muted=true;v.volume=.6;
+ let onScreen=false, manuallyPaused=false;
+ new IntersectionObserver(entries=>{if(entries[0].isIntersecting)loadVideo(v);},{rootMargin:'250px'}).observe(root);
+ new IntersectionObserver(entries=>{onScreen=entries[0].isIntersecting;if(onScreen&&!paused&&!document.hidden&&!manuallyPaused)playVideo(v);else v.pause();},{threshold:.55}).observe(root);
+ $('.inline-play',root).addEventListener('click',()=>{manuallyPaused=!v.paused;if(v.paused){manuallyPaused=false;playVideo(v);}else v.pause();});
+ $('.inline-sound',root).addEventListener('click',()=>{v.muted=!v.muted;labelPlayer(root);if(v.paused){manuallyPaused=false;playVideo(v);}});
+ $('.inline-full',root).addEventListener('click',()=>{if(v.requestFullscreen)v.requestFullscreen().catch(()=>{});else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();});
+ ['play','pause','volumechange','loadedmetadata'].forEach(event=>v.addEventListener(event,()=>labelPlayer(root)));
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)v.pause();else if(onScreen&&!paused&&!manuallyPaused)playVideo(v);});
+ $('.motion-toggle').addEventListener('click',()=>{if(paused)v.pause();else if(onScreen&&!manuallyPaused)playVideo(v);});
+ reduced.addEventListener('change',()=>{if(paused)v.pause();});
+ labelPlayer(root);
+});
+$('.lang').addEventListener('click',()=>{cycleLabel();players.forEach(labelPlayer);});
+// Wide screens pin the split canvas; phones reveal each benefit in normal document flow.
+function updateBenefits(){
+ const section=$('.benefits-scroll');if(!section)return;
+ const mobile=matchMedia('(max-width:760px)').matches;
+ const rect=section.getBoundingClientRect();
+ const progress=paused?1:Math.max(0,Math.min(1,-rect.top/Math.max(1,section.offsetHeight-innerHeight)));
+ section.style.setProperty('--benefit-progress',progress);
+ $$('.benefit-side').forEach(side=>{
+  const r=side.getBoundingClientRect();
+  const p=paused?1:mobile?Math.max(0,Math.min(1,(innerHeight*.82-r.top)/(r.height*.75))):progress;
+  $$('.benefit-row',side).forEach((row,i)=>{
+   const t=paused?1:Math.max(0,Math.min(1,(p-(i*.14+.02))/.18));
+   row.style.opacity=String(.12+t*.88);row.style.transform=`translateY(${(1-t)*22}px)`;
+  });
+  const stat=$('.benefit-stat',side), t=Math.max(0,Math.min(1,(p-.42)/.4));
+  stat.style.opacity=String(.1+.9*t);stat.style.transform=`translateY(${(1-t)*30}px)`;
+  $('[data-counter]',side).textContent=String(Math.round(20*(1-Math.pow(1-t,3))));
+ });
+}
+requestScroll();
