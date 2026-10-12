@@ -85,3 +85,5 @@ img{height:auto}body{overflow-x:clip}.photo-card img,.tablet-visual img,.film-im
 @media(prefers-reduced-motion:reduce){.cp-listening .cp-wave i,.cp-listening .cp-mic:after,.cp-paid .cp-order{animation:none}.cp-meter span{transition:none}}
 
 .cp-actions button{min-height:44px;padding:10px 8px;font-size:11px}.motion-paused .cp-listening .cp-wave i,.motion-paused .cp-listening .cp-mic:after,.motion-paused .cp-paid .cp-order{animation:none}.motion-paused .cp-meter span{transition:none}
+
+.cp-tech .cp-tech-feature{font-size:15px;font-weight:700;letter-spacing:0;padding:12px 17px;color:#ffd8aa;background:#ff971f16;border-color:#ff971f66}.cp-tech .cp-tech-feature:nth-child(2){color:#efcfff;background:#b975df20;border-color:#c588e175}
