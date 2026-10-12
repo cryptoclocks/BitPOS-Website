@@ -67,6 +67,10 @@
     {
       "file": "video/bitpos-cafe-trial.mp4",
       "source": "RealUse/export/BitPOS-Mini-Cafe-Demo-Music.mp4; web-optimized H264/AAC"
+    },
+    {
+      "file": "pitch-cover.webp",
+      "source": "BitPOS pitch video frame at 00:02; poster only, source video unchanged"
     }
   ],
   "sequence": "BitPOS-Motion/public/anatomy/anatomy-frames-part01..07.zip; Blender-rendered product frames 60..600 at step 6",

@@ -16,7 +16,7 @@ realLabel:'จากโต๊ะทำงาน สู่โต๊ะในร�
 chapter4:'04 — สิ่งที่กำลังพัฒนา',roadmap:'แผนพัฒนาผลิตภัณฑ์',next1:'การกลับมาอีกครั้ง',next2:'เริ่มตรงนี้',nextDescription:'เรากำลังต่อยอดจากการชำระเงิน สู่การต้อนรับลูกค้ากลับมา โดยร้านเป็นผู้ควบคุม',aiLabel:'โปรโมชั่นจาก AI',aiNextTitle:'ถูกจังหวะ<br>ตรงใจลูกค้า',aiNextDescription:'ร่างโปรโมชั่น ตรวจทาน เลือกโต๊ะ แล้วส่ง AI ช่วยคิด แต่คุณคือผู้ตัดสินใจ',loyaltyLabel:'NFT และสิทธิพิเศษ',loyaltyTitle:'รางวัลเล็ก ๆ<br>ความสัมพันธ์ยาวนาน',loyaltyDescription:'ภาพสะสม สิทธิพิเศษในร้าน และเหตุผลที่จะกลับมา ประสบการณ์สะสมแต้มที่ออกแบบเพื่อลูกค้าของคุณ',coffeeReady:'กาแฟของคุณ<br>พร้อมแล้ว',pickCounter:'รับได้ที่เคาน์เตอร์',pickupLabel:'แจ้งเตือนประจำโต๊ะ',pickupTitle:'ลดเสียงเรียก<br>เพิ่มเวลาพูดคุย',pickupDescription:'กดออเดอร์พร้อมรับในระบบร้าน ส่งภาพแจ้งเตือนพร้อมเสียงไปยังโต๊ะที่ถูกต้อง',roadmapNote:'AI โปรโมชั่น NFT สะสมแต้ม การแจ้งรับสินค้า และ stablecoin เพิ่มเติม อยู่ระหว่างพัฒนา การทดลองในร้านใช้ test USDG บน Solana devnet',
 contactLabel:'เรื่องดี ๆ เริ่มจากการพูดคุย',contact1:'ร้านกาแฟคุณ',contact2:'การเชื่อมต่อครั้งใหม่',contactDescription:'สร้างจากประเทศไทย คิดไปไกลกว่าพรมแดน<br>ให้ BitPOS มาอยู่บนโต๊ะของคุณ',source:'สำรวจซอร์สโค้ด ↗',guide:'คู่มือผลิตภัณฑ์',pauseMotion:'พักภาพเคลื่อนไหว',openYoutube:'เปิดบน YouTube ↗'
 };
-Object.assign(thai,{navDemo:'ลองใช้งานเดโม ↗',tryLive:'ลองใช้งานจริง',posDemo:'เดโมคนขาย ↗',customerDemo:'เดโมลูกค้า ↗',
+Object.assign(thai,{heroFilm:'เรื่องราวของ BITPOS',heroFilmLength:'02:00 · จากออเดอร์ สู่โอกาสใหม่',navDemo:'ลองใช้งานเดโม ↗',tryLive:'ลองใช้งานจริง',posDemo:'เดโมคนขาย ↗',customerDemo:'เดโมลูกค้า ↗',
 dragModel:'ลากเพื่อหมุนดู · 360°',autoScreens:'สลับจออัตโนมัติ',pitchLabel:'เรื่องราวทั้งหมด ในสองนาที',pitchHeading:'จอเล็ก ๆ<br>เรื่องราวที่ใหญ่กว่า',pitchIntro:'ดูว่า BitPOS เชื่อมประสบการณ์ในร้านกาแฟเข้าด้วยกันอย่างไร',benefitLabel:'ดีต่อร้านคุณ ดีต่อระบบนิเวศ',forCafe:'สำหรับร้านกาแฟ',benefitCafeTitle:'รอน้อยลง<br>กลับมาบ่อยขึ้น',queueTitle:'ลดคิวหน้าร้าน',queueText:'ลูกค้าสั่งและจ่ายจากโต๊ะได้เลย',dataTitle:'รู้จักลูกค้าดีขึ้น',dataText:'ประวัติที่ลูกค้ายินยอม แยกตามโต๊ะ',repeatTitle:'เพิ่มการกลับมาใช้บริการ',repeatText:'ข้อเสนอและรางวัลที่อยากกลับมารับ',pilotTarget:'เป้าหมายช่วงทดลอง',repeatMetric:'เพิ่มอัตราการกลับมา',forSolana:'สำหรับ SOLANA',benefitSolanaTitle:'Stablecoin<br>บนโต๊ะร้านกาแฟ',stableTitle:'การใช้ Stablecoin ในชีวิตจริง',stableText:'เปลี่ยนออเดอร์ประจำวันเป็นการจ่ายบนเชน',gasTitle:'ลูกค้าไม่ต้องมี SOL สำหรับ gas',gasText:'ร้านสนับสนุนค่าธรรมเนียมเครือข่าย',usersTitle:'ต้อนรับผู้ใช้กลุ่มใหม่',usersText:'เข้าถึงผู้คนในสถานที่ที่คุ้นเคย',adoptionTarget:'เป้าหมายช่วงทดลอง',paidMetric:'ออเดอร์ที่จ่ายบน Solana',targetNote:'ตัวเลขเป้าหมายสำหรับการทดลอง ยังไม่ใช่ผลที่วัดได้จริง การกลับมาใช้บริการเทียบกับค่าฐานของร้านที่เข้าร่วม'
 });
 const stageMessages = {
@@ -65,9 +65,9 @@ function updateScroll(){scrollPending=false;const y=window.scrollY;const max=doc
 if(!paused){desiredFrame=Math.round(progress*90);drawFrame();$('.film-image').style.transform=`translateY(${Math.max(-35,Math.min(35,($('.film-section').getBoundingClientRect().top-innerHeight*.4)*.08))}px) scale(1.08)`;}updateBenefits();lastY=y;}
 function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
 window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});requestScroll();
-function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-product').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
+function setMotion(value){paused=value;document.documentElement.classList.toggle('motion-paused',paused);$('.motion-toggle').setAttribute('aria-pressed',String(paused));if(paused){$$('.reveal').forEach(el=>el.classList.add('visible'));$('.hero-cinema').style.transform='';$('.film-image').style.transform='';}else{loadSequence();requestScroll();}refreshControls();}
 $('.motion-toggle').addEventListener('click',()=>setMotion(!paused));reduced.addEventListener('change',e=>setMotion(e.matches));setMotion(paused);
-if(matchMedia('(hover:hover) and (pointer:fine)').matches){$('.hero-product').addEventListener('pointermove',e=>{if(paused)return;const r=$('.hero-product').getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;$('.hero-product').style.transform=`perspective(1000px) rotateY(${x*12-6}deg) rotateX(${-y*8}deg)`;});$('.hero-product').addEventListener('pointerleave',()=>{$('.hero-product').style.transform='';});$$('.magnetic').forEach(button=>{button.addEventListener('pointermove',e=>{if(paused)return;const r=button.getBoundingClientRect();button.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`;});button.addEventListener('pointerleave',()=>button.style.transform='');});}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){$$('.magnetic').forEach(button=>{button.addEventListener('pointermove',e=>{if(paused)return;const r=button.getBoundingClientRect();button.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`;});button.addEventListener('pointerleave',()=>button.style.transform='');});}
 document.addEventListener('visibilitychange',()=>{document.documentElement.classList.toggle('tab-hidden',document.hidden);});
 
 // The same order/pay/paid story is selectable or automatically cycled on the 3D screen.
@@ -80,18 +80,33 @@ new IntersectionObserver(entries=>{stageVisible=entries[0].isIntersecting;if(sta
 setInterval(()=>{if(cycleScreens&&stageVisible&&!paused&&!document.hidden&&performance.now()-cycleTimer>4800){cycleTimer=performance.now();$$('.step')[(activeStep+1)%3].click();}},700);
 let modelStarted=false;
 new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!modelStarted){modelStarted=true;import('/mini-viewer.js').then(m=>m.mountMini($('.model-host'))).catch(()=>{});}},{rootMargin:'450px'}).observe($('.model-host'));
-// Videos are same-origin, muted on first play, and paused outside the viewport.
+// Try audible playback; browser-blocked autoplay falls back to muted until a gesture.
 const players=$$('[data-player]');
-function labelPlayer(root){const v=$('video',root);const th=language==='th';$('.inline-play span',root).textContent=v.paused?(th?'เล่น':'Play'):(th?'หยุด':'Pause');$('.inline-play',root).dataset.playing=String(!v.paused);$('.inline-play',root).setAttribute('aria-label',v.paused?'Play video':'Pause video');$('.inline-sound span',root).textContent=v.muted?(th?'ปิดเสียงอยู่':'Sound off'):(th?'เปิดเสียงอยู่':'Sound on');$('.inline-sound',root).setAttribute('aria-pressed',String(!v.muted));$('.inline-sound',root).setAttribute('aria-label',v.muted?'Enable video sound':'Mute video');}
+let soundUnlocked=false;
+function labelPlayer(root){const v=$('video',root);const th=language==='th';$('.inline-play span',root).textContent=v.paused?(th?'เล่น':'Play'):(th?'หยุด':'Pause');$('.inline-play',root).dataset.playing=String(!v.paused);$('.inline-play',root).setAttribute('aria-label',v.paused?'Play video':'Pause video');$('.inline-sound span',root).textContent=v.muted?(th?'แตะเปิดเสียง':'Enable sound'):(th?'เปิดเสียงอยู่':'Sound on');$('.inline-sound',root).setAttribute('aria-pressed',String(!v.muted));$('.inline-sound',root).setAttribute('aria-label',v.muted?'Enable video sound':'Mute video');}
 function loadVideo(v){if(!v.getAttribute('src')){v.src=v.dataset.src;v.load();}}
-function playVideo(v){loadVideo(v);players.forEach(p=>{const other=$('video',p);if(other!==v)other.pause();});return v.play().catch(()=>{});}
+async function playVideo(v){
+ loadVideo(v);players.forEach(p=>{const other=$('video',p);if(other!==v)other.pause();});
+ const root=v.closest('[data-player]');
+ if(root.dataset.userMuted!=='true'&&(soundUnlocked||root.dataset.autoplayBlocked!=='true'))v.muted=false;
+ try{await v.play();}
+ catch(error){if(error.name==='NotAllowedError'&&!v.muted){root.dataset.autoplayBlocked='true';v.muted=true;labelPlayer(root);await v.play().catch(()=>{});}}
+}
+function unlockVideoSound(event){
+ if(event.type==='keydown'&&!['Enter',' ','ArrowDown','Tab'].includes(event.key))return;
+ if(event.target.closest?.('.video-controls,.motion-toggle,.video-open'))return;
+ soundUnlocked=true;
+ players.forEach(root=>{const v=$('video',root);if(root.dataset.userMuted!=='true'&&!v.paused){v.muted=false;v.play().catch(()=>{v.muted=true;});labelPlayer(root);}});
+ document.removeEventListener('pointerdown',unlockVideoSound);document.removeEventListener('keydown',unlockVideoSound);
+}
+document.addEventListener('pointerdown',unlockVideoSound);document.addEventListener('keydown',unlockVideoSound);
 players.forEach(root=>{
- const v=$('video',root);v.muted=true;v.volume=.6;
+ const v=$('video',root);v.muted=false;v.volume=.45;
  let onScreen=false, manuallyPaused=false;
  new IntersectionObserver(entries=>{if(entries[0].isIntersecting)loadVideo(v);},{rootMargin:'250px'}).observe(root);
- new IntersectionObserver(entries=>{onScreen=entries[0].isIntersecting;if(onScreen&&!paused&&!document.hidden&&!manuallyPaused)playVideo(v);else v.pause();},{threshold:.55}).observe(root);
+ new IntersectionObserver(entries=>{onScreen=entries[0].isIntersecting;if(onScreen&&!paused&&!document.hidden&&!manuallyPaused)playVideo(v);else v.pause();},{threshold:root.closest('.hero-cinema')?.2:.55}).observe(root);
  $('.inline-play',root).addEventListener('click',()=>{manuallyPaused=!v.paused;if(v.paused){manuallyPaused=false;playVideo(v);}else v.pause();});
- $('.inline-sound',root).addEventListener('click',()=>{v.muted=!v.muted;labelPlayer(root);if(v.paused){manuallyPaused=false;playVideo(v);}});
+ $('.inline-sound',root).addEventListener('click',()=>{v.muted=!v.muted;root.dataset.userMuted=String(v.muted);if(!v.muted)soundUnlocked=true;labelPlayer(root);if(v.paused){manuallyPaused=false;playVideo(v);}});
  $('.inline-full',root).addEventListener('click',()=>{if(v.requestFullscreen)v.requestFullscreen().catch(()=>{});else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();});
  ['play','pause','volumechange','loadedmetadata'].forEach(event=>v.addEventListener(event,()=>labelPlayer(root)));
  document.addEventListener('visibilitychange',()=>{if(document.hidden)v.pause();else if(onScreen&&!paused&&!manuallyPaused)playVideo(v);});
