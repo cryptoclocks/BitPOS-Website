@@ -113,3 +113,5 @@ html[lang=th] #next{font-family:Sarabun,Mont,sans-serif}html[lang=th] #next h2,h
 
 /* Compact mobile exploded view: content-sized rows rather than a full-height image slot. */
 @media(max-width:760px){.anatomy{height:130svh;min-height:0}.anatomy-sticky{height:auto;min-height:0;max-height:none;top:12px;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:20px;padding:26px 6% 24px;align-content:start}.anatomy-head h2{font-size:clamp(26px,6.8vw,34px);line-height:1.2;margin-top:12px}.anatomy-fallback,#anatomy-canvas{height:auto;aspect-ratio:16/9;align-self:start;object-fit:contain}.anatomy-bottom{margin:0;font-size:8px;line-height:1.5;gap:12px}.motion-paused .anatomy{height:auto;min-height:0}.motion-paused .anatomy-sticky{height:auto;max-height:none}html[lang=th] .anatomy-head h2{font-family:Sarabun,Mont,sans-serif;letter-spacing:0;line-height:1.4}html[lang=th] .anatomy-head .serif-accent{font-family:inherit;font-style:normal}html[lang=th] .anatomy-bottom{letter-spacing:0;font-size:10px}}
+
+@media(max-width:760px){.anatomy{height:auto;min-height:0}.anatomy-sticky{position:relative;top:auto;padding-bottom:24px}.mini-specs{padding-top:0}}
