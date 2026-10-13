@@ -71,6 +71,11 @@
     {
       "file": "pitch-cover.webp",
       "source": "BitPOS pitch video frame at 00:02; poster only, source video unchanged"
+    },
+    {
+      "file": "mini-ai-promotion-20261013.png",
+      "source": "Physical BitPOS ESP32 native framebuffer after LCD transfer, 2026-10-13. Public PRODUCT_UPDATES_20261013.md documents authenticated render ACK.",
+      "type": "actual_native_frame_not_optical_photo"
     }
   ],
   "sequence": "BitPOS-Motion/public/anatomy/anatomy-frames-part01..07.zip; Blender-rendered product frames 60..600 at step 6",

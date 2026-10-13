@@ -20,7 +20,7 @@ Import this repository in Vercel, use Other framework, build `npm run build`, ou
 
 ## Claims and assets
 
-The existing café trial uses test USDG on Solana devnet. AI promotions, NFT loyalty, pickup alerts and additional stablecoins are presented as development roadmap, not completed features. The website does not connect wallets or handle payment keys.
+The existing café trial uses test USDG on Solana devnet. The real-device proof section shows a Gemini draft approved by the merchant and acknowledged by the physical Mini. Devnet USDC/x402 and BitPOS-issued USDT-test have separate runtime evidence. NFT loyalty artwork remains a concept; the embedded Copilot widget remains a simulation. Pickup audio and human voice acceptance remain separate from code/deployment evidence. The website does not connect wallets or handle payment keys.
 
 `public/assets/asset-sources.json` records reused assets. Product renders/lifestyle/collectibles are illustrations; the café trial section uses actual trial media. Existing BitPOS wordmark, Blender renders and footage are supplied by the project owner. Font licenses are included next to font files. Project-owned source is Apache-2.0; brands, fonts and media retain their respective rights.
 
