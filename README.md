@@ -25,3 +25,13 @@ The existing café trial uses test USDG on Solana devnet. The real-device proof 
 `public/assets/asset-sources.json` records reused assets. Product renders/lifestyle/collectibles are illustrations; the café trial section uses actual trial media. Existing BitPOS wordmark, Blender renders and footage are supplied by the project owner. Font licenses are included next to font files. Project-owned source is Apache-2.0; brands, fonts and media retain their respective rights.
 
 Mobile anatomy uses an uncropped contained frame between a separate title and two legible callout cards. It preserves the scroll-driven Blender sequence while shortening its mobile scroll span.
+
+## Platform interface gallery
+
+192 editable interface designs cover customer ordering, rider workflows, merchant POS and checkout, including distinct mobile and desktop compositions. These are design previews with illustrative data, not evidence of live delivery or ride operation. Current local Android/API/PostgreSQL/merchant-web evidence covers configured ordering and store pickup; payment verification in that joined fixture uses an explicitly SQL-only test seam.
+
+![BitPOS platform interface gallery](public/assets/platform/bitpos-platform.gif)
+
+[Customer](public/assets/platform/customer.webp) · [Rider](public/assets/platform/rider.webp) · [POS desktop](public/assets/platform/pos.webp) · [Pay desktop](public/assets/platform/pay.webp)
+
+Source: owner-approved BitPOS FigCraft master, rendered 17 October 2026. Existing cafe/devnet evidence remains separate.
