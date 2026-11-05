@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BitPOS with Muse — Meta Global AI Developer Hackathon</title>
+<meta name="description" content="Tap at a cafe table, say yes once in Messenger, and the shop's AI handles the rest. Built on Meta's Muse models during the Meta Global AI Developer Hackathon.">
+<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/meta.css"></head>
+<body>
+<header class="top"><a href="/"><img src="/assets/logo.webp" alt="BitPOS home" width="114" height="38"></a><nav aria-label="Meta edition"><a href="/" class="hide">BitPOS home</a><a href="#video">Video</a><a href="#built">What we built</a><a href="#limits">Status</a></nav></header>
+<main>
+<div class="hero"><div class="wrap"><p class="eye">META GLOBAL AI DEVELOPER HACKATHON · STARTUP TRACK</p><h1>BitPOS with Muse</h1><p class="lead">Tap at a cafe table. Say yes once in Messenger. The shop's AI knows the menu, respects the prices and works for the owner.</p><div class="cta"><a class="btn" href="https://meta-pay.cashlessthailand.com/">Open the demo shop</a><a class="btn alt" href="https://github.com/cryptoclocks/BitPOS/tree/hackathon/meta-2026">Source code</a><a class="btn alt" href="https://github.com/cryptoclocks/BitPOS/blob/hackathon/meta-2026/meta-hackathon/JUDGES.md">Judges' guide</a></div></div></div>
+<section id="video"><div class="wrap"><h2>The three-minute pitch</h2><p class="sub">A motion video of the customer, staff and owner flows.</p><video controls preload="metadata" poster="/assets/meta/cafe-bg.jpg" src="/assets/meta/bitpos-muse-pitch.mp4"></video><p class="note">Motion illustration with sample data. All payments are in a Stripe sandbox with no real money.</p></div></section>
+<section id="built" class="band"><div class="wrap"><h2>Built during the hackathon</h2><p class="sub">Added between 26 October and 4 November 2026, on top of the existing BitPOS point of sale.</p><div class="grid">
+<div class="card"><span>TAP</span><h3>Messenger opens at your table</h3><p>One consent button and no sign-up. NTAG 424 one-time links are checked on the server.</p></div>
+<div class="card"><span>OFFER</span><h3>Muse Spark picks, the server prices</h3><p>The model chooses from offers the owner approved. It never sets a price.</p></div>
+<div class="card"><span>CHAT</span><h3>Order by text or voice</h3><p>Muse Spark edits a real cart with server tools, in Thai or English. Stripe Checkout takes the payment.</p></div>
+<div class="card"><span>ALLOWANCE</span><h3>Let the AI pay, within limits</h3><p>From one day to three months, with a cap per order and in total. Stop at any time.</p></div>
+<div class="card"><span>BOOK</span><h3>Food waits until you tap in</h3><p>Book in chat from free times only. Pre-orders stay out of the kitchen queue until check-in.</p></div>
+<div class="card"><span>CONNECTOR</span><h3>Your own agent can order</h3><p>An MCP connector gives agents the menu, a server quote and checkout. They pass IDs only.</p></div>
+<div class="card"><span>OWNER</span><h3>AI drafts, a person approves</h3><p>Muse Spark drafts promotions and Muse Image makes banners. Nothing goes live without approval.</p></div>
+<div class="card"><span>EVIDENCE</span><h3>Every model call on record</h3><p>The owner's ledger shows each AI call, tap, Stripe event and promotion decision.</p></div>
+<div class="card"><span>ONE SHOP</span><h3>One POS for every channel</h3><p>Messenger, table and agent orders meet in one place, with offers on the BitPOS Mini.</p></div>
+</div></div></section>
+<section id="limits"><div class="wrap"><h2>Where it stands today</h2><ul class="limits">
+<li>Deployed and running with the Muse Café demo shop and sample menu data.</li>
+<li>Stripe sandbox only, using a US test merchant. No real money moves.</li>
+<li>The Meta app is in development mode, so Messenger only answers accounts with a role on the app.</li>
+<li>The physical card on Table 1 uses a plain link that can be copied. The NTAG 424 one-time check is built and tested with simulated taps.</li>
+<li>Inside the Muse app, each purchase still asks for approval. The AI allowance applies to our Messenger chat and connector.</li>
+<li>The BitPOS point of sale and BitPOS Mini existed before the hackathon. The <a href="https://github.com/cryptoclocks/BitPOS/blob/hackathon/meta-2026/meta-hackathon/PROVENANCE.md">provenance report</a> separates old and new work.</li>
+</ul></div></section>
+</main>
+<footer><div class="wrap">Built by Natthapong Suwanjit. Muse, Messenger and Stripe are the property of their owners; this is an independent hackathon project.</div></footer>
+</body></html>
